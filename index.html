@@ -1,57 +1,288 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SyNeT: Synthetic Negatives for Traversability learning</title>
+  <title>SyNeT: Synthetic Negatives for Traversability Learning</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
+  <!-- Local CSS (Bulma + icons) -->
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
 
   <script defer src="./static/js/fontawesome.all.min.js"></script>
+
+  <!-- Small page-specific tweaks (safe even if index.css is missing) -->
+  <style>
+    :root { --maxw: 1300px; }
+    body { font-family: "Google Sans", "Noto Sans", sans-serif; }
+    .container.is-max-desktop { max-width: var(--maxw); }
+    .publication-title { line-height: 1.15; }
+    .author-block a { color: inherit; }
+    .section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+    .teaser {  }
+    .figure-caption { font-size: 0.95rem; color: #555; margin-top: 0.6rem; }
+    .video-wrap { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px; box-shadow: 0 6px 22px rgba(0,0,0,0.08); }
+    .video-wrap iframe, .video-wrap video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    pre { white-space: pre-wrap; word-break: break-word; }
+    .pill { display:inline-block; padding: .25rem .6rem; border-radius: 999px; background: #f4f5f7; font-size: .85rem; margin: .15rem .2rem 0 0; }
+  </style>
 </head>
 
 <body>
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">SyNeT: Synthetic Negatives for Traversability learning</h1>
 
-            <div class="column has-text-centered">
-              <div class="publication-links">
-                <!-- Paper (disabled / blank) -->
-                <span class="link-block">
-                  <a class="external-link button is-normal is-rounded is-dark" disabled>
-                    <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                    </span>
-                    <span>Paper</span>
-                  </a>
-                </span>
+<!-- ========================= HERO ========================= -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">SyNeT: Synthetic Negatives for Traversability Learning</h1>
 
-                <!-- Code Link (GitHub) -->
-                <span class="link-block">
-                  <a href="https://anonymous.4open.science/r/SyNet-8B8D/README.md"
-                     class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-              </div>
+          <!-- Replace with your author list (links optional) -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Anonymous Authors</span>
+          </div>
+          <div class="is-size-6 publication-authors" style="margin-top:.35rem;">
+            <span class="author-block">RA-L (under review)</span>
+          </div>
+
+          <div class="column has-text-centered" style="margin-top:1.2rem;">
+            <div class="publication-links">
+              <!-- Paper -->
+              <span class="link-block">
+                <a href="./SyNeT_original.pdf" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper (PDF)</span>
+                </a>
+              </span>
+
+              <!-- Code -->
+              <span class="link-block">
+                <a href="https://anonymous.4open.science/r/SyNet-8B8D/README.md" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+
+              <!-- Video anchor (scroll) -->
+              <span class="link-block">
+                <a href="#video" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-video"></i></span>
+                  <span>Video</span>
+                </a>
+              </span>
             </div>
 
+            <!-- Quick tags / highlights -->
+            <div style="margin-top:1rem;">
+              <span class="pill">Self-Supervised traversability</span>
+              <span class="pill">Generation Synthetic Negatives</span>
+              <span class="pill">PU + PN compatible</span>
+              <span class="pill">Object-centric FPR eval</span>
+            </div>
           </div>
+
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- ========================= ABSTRACT ========================= -->
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Abstract</h2>
+
+    <div class="columns is-variable is-6 is-vcentered">
+      <!-- Left: Abstract text -->
+      <div class="column is-8">
+        
+        <div class="content has-text-justified">
+          <p>
+            Reliable traversability estimation is crucial for autonomous robots to navigate complex outdoor environments safely.
+            Existing self-supervised learning frameworks primarily rely on positive and unlabeled data; however, the lack of explicit
+            negative data remains a critical limitation, hindering the model’s ability to accurately identify diverse non-traversable regions.
+            To address this issue, we introduce a method to explicitly construct <em>synthetic negatives</em> and integrate them into
+            vision-based traversability learning as a <em>training strategy</em> that plugs into both Positive–Unlabeled (PU) and
+            Positive–Negative (PN) frameworks without modifying inference architectures. We also introduce an object-centric FPR evaluation
+            that measures errors specifically on the inserted negative regions, providing an annotation-free indicator of non-traversable recognition.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: Abstract image -->
+      <div class="column is-4">
+        <figure class="image teaser">
+          <!-- 예: teaser / key idea / overview 일부 -->
+          <img src="./static/images/first_half.png" alt="SyNeT abstract overview">
+        </figure>
+        <p class="figure-caption has-text-centered">
+          Key idea of SyNeT: explicit synthetic negatives for traversability learning.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========================= OVERVIEW ========================= -->
+<!-- <section class="section" id="overview">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Overview</h2>
+    <div class="columns is-centered">
+      <div class="column is-10">
+        <figure class="image teaser">
+          <!-- Put your overview image here -->
+          <!-- Recommended: ./static/images/overview.png -->
+          <!-- <img src="./static/images/overview.png" alt="SyNeT overview figure (replace this file)">
+        </figure>
+        <p class="figure-caption">
+          High-level concept: the robot treats executed trajectories as positive supervision and inserts synthetic negatives as explicit non-traversable supervision.
+        </p>
+        <p class="help">
+          <strong>Setup:</strong> add your figure to <code>static/images/overview.png</code> (or change the path above).
+        </p>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!-- ========================= METHOD ========================= -->
+<section class="section" id="method">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Method</h2>
+
+    <div class="columns is-centered">
+      <div class="column is-12">
+        <figure class="image teaser">
+          <!-- Put your pipeline/diagram image here -->
+          <!-- Recommended: ./static/images/pipeline.png -->
+          <img src="./static/images/dif_pipeline.png" alt="SyNeT method pipeline (replace this file)">
+        </figure>
+        <p class="figure-caption">
+          Synthetic Negative Generation Module
+        </p>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-12">
+        <figure class="image teaser">
+          <!-- Put your pipeline/diagram image here -->
+          <!-- Recommended: ./static/images/pipeline.png -->
+          <img src="./static/images/overview_sum_new.png" alt="SyNeT method pipeline (replace this file)">
+        </figure>
+        <p class="figure-caption">
+          SyNeT integrated into PU and PN baselines: synthetic negatives provide explicit non-traversable features that enforce clearer separation in the embedding space.
+        </p>
+      </div>
+    </div>
+
+    <div class="columns is-variable is-6">
+      <div class="column">
+        <h3 class="title is-5">1) Synthetic Negative Generation</h3>
+        <div class="content">
+          <ul>
+            <li><strong>Region selection</strong>: sample ROI and target size inside the ground area.</li>
+            <li><strong>Inpainting</strong>: generate scene-consistent negatives with diffusion inpainting (e.g., Stable Diffusion 3.5 / FLUX.1 Fill).</li>
+            <li><strong>Segmentation & filtering</strong>: segment the generated object and apply scene filters (object count, pixel area); resample if violated.</li>
+            <li><strong>Composition</strong>: blend the approved negative into the base image to obtain a composite and a pixel-wise negative mask.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="column">
+        <h3 class="title is-5">2) Training Strategy (Plug-in)</h3>
+        <div class="content">
+          <ul>
+            <li><strong>PU (LORT)</strong>: add a negative-center assignment loss for synthetic negatives + unlabeled features, plus a repulsion loss to avoid center collapse.</li>
+            <li><strong>PN (V-STRONG)</strong>: add a contrastive loss term that treats synthetic negatives as reliable negative anchors.</li>
+            <li><strong>No inference change</strong>: SyNeT modifies only training objectives; at test time, you run the original model and produce a similarity map.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+</section>
+
+<!-- ========================= QUALITATIVE RESULTS ========================= -->
+<section class="section" id="results">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Qualitative Results</h2>
+    <div class="content">
+      <p>
+        Below are example traversability maps across diverse environments (social, indoor, off-road, and urban).
+      </p>
+    </div>
+
+    <!-- A responsive grid (2 columns on desktop, 1 on mobile) -->
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <figure class="image teaser">
+          <img src="./static/images/fig_sum.png" alt="Qualitative result 1 (replace this file)">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= VIDEO ========================= -->
+<section class="section" id="video">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Video</h2>
+
+    <!-- Option A: YouTube (replace VIDEO_ID) -->
+    <!-- <div class="video-wrap" style="margin-bottom:1.25rem;">
+      <iframe
+        src="https://www.youtube.com/embed/VIDEO_ID"
+        title="SyNeT video"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    </div>
+    <p class="help">Replace <code>VIDEO_ID</code> with your YouTube id (e.g., <code>O_HowJk-GDw</code>).</p> -->
+
+    <!-- Option B: Local MP4 (uncomment if you prefer hosting the file) -->
+    
+    <div class="video-wrap">
+      <video controls playsinline>
+        <source src="./static/videos/qualitative_results.mp4" type="video/mp4">
+      </video>
+    </div>
+   
+  </div>
+</section>
+
+<!-- ========================= CITATION ========================= -->
+<section class="section" id="citation">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Citation</h2>
+    <div class="content">
+      <p>If you find this useful, please cite:</p>
+      <pre>
+        ------
+      </pre>
+      <p class="help">
+        Update the BibTeX fields once the author list / venue / year are final.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- <footer class="footer">
+  <div class="container is-max-desktop">
+    <div class="content has-text-centered">
+      <p style="opacity:.7;">
+        Template inspired by academic project pages (Bulma + FontAwesome).
+      </p>
+    </div>
+  </div>
+</footer> -->
+
 </body>
 </html>
