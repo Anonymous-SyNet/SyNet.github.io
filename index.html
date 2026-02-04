@@ -132,26 +132,7 @@
 </section>
 
 <!-- ========================= OVERVIEW ========================= -->
-<!-- <section class="section" id="overview">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">Overview</h2>
-    <div class="columns is-centered">
-      <div class="column is-10">
-        <figure class="image teaser">
-          <!-- Put your overview image here -->
-          <!-- Recommended: ./static/images/overview.png -->
-          <!-- <img src="./static/images/overview.png" alt="SyNeT overview figure (replace this file)">
-        </figure>
-        <p class="figure-caption">
-          High-level concept: the robot treats executed trajectories as positive supervision and inserts synthetic negatives as explicit non-traversable supervision.
-        </p>
-        <p class="help">
-          <strong>Setup:</strong> add your figure to <code>static/images/overview.png</code> (or change the path above).
-        </p>
-      </div>
-    </div>
-  </div>
-</section> -->
+
 <!-- ========================= METHOD ========================= -->
 <section class="section" id="method">
   <div class="container is-max-desktop">
@@ -211,8 +192,52 @@
     
   </div>
 </section>
+<!-- ========================= DIFFUSION PROMPT ==========================-->
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Diffusion Generation Prompt</h2>
+
+    <div class="columns is-variable is-6 is-vcentered">
+      <!-- Left: Abstract text -->
+      <div class="column is-12">
+        
+        <div class="content has-text-justified">
+          <p>
+             To generate diverse appearances of the same object across different environments, we used a generation prompt that specified only the minimum requirements (style: realistic; location: on the ground), leaving the remaining details to be determined by the model.
+             In the case of complex creatures, we added more constraints (e.g., full body, 2 legs, 2 ears) to ensure more complete generations.
+          </p>
+        </div>
+        <h3 class="title is-5"> Prompt </h3>
+        <div class="content">
+          <ul>
+            <li><strong>bicycle</strong>: a realistic bicycle lying on the ground</li>
+            <li><strong>box</strong>: a realistic package box on the ground</li>
+            <li><strong>dog</strong>: a realistic dog with full body, 4 legs</li>
+            <li><strong>people</strong>: a realistic person, full body, 2 eyes, 1 nose, 2 ears, 1 mouth, solo</li>
+            <li><strong>trash</strong>: a pile of garbage on the ground</li>
+            <li><strong>rock</strong>: Add a realistic big rock on the ground</li>
+            <li><strong>tree log</strong>: Add a realistic tree log lying on the ground</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-12">
+        <figure class="image teaser">
+          <!-- Put your pipeline/diagram image here -->
+          <!-- Recommended: ./static/images/pipeline.png -->
+          <img src="./static/images/dif_prompt.png" alt="">
+        </figure>
+        <!-- <p class="figure-caption">
+          SyNeT integrated into PU and PN baselines: synthetic negatives provide explicit non-traversable features that enforce clearer separation in the embedding space.
+        </p> -->
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ========================= QUALITATIVE RESULTS ========================= -->
+
 <section class="section" id="results">
   <div class="container is-max-desktop">
     <h2 class="title is-3">Qualitative Results</h2>
@@ -239,23 +264,23 @@
     <h2 class="title is-3">Video</h2>
 
     <!-- Option A: YouTube (replace VIDEO_ID) -->
-    <!-- <div class="video-wrap" style="margin-bottom:1.25rem;">
+    <div class="video-wrap" style="margin-bottom:1.25rem;">
       <iframe
-        src="https://www.youtube.com/embed/VIDEO_ID"
-        title="SyNeT video"
+        src="https://www.youtube.com/embed/sR4DLGYOKS4"
+        title="SyNeT_qualitative_results"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen></iframe>
     </div>
-    <p class="help">Replace <code>VIDEO_ID</code> with your YouTube id (e.g., <code>O_HowJk-GDw</code>).</p> -->
+    <p class="help">Qualitative results on SCAND, RELLIS-3D and ROUS(Ours).</p>
 
     <!-- Option B: Local MP4 (uncomment if you prefer hosting the file) -->
     
-    <div class="video-wrap">
+    <!-- <div class="video-wrap">
       <video controls playsinline>
         <source src="./static/videos/qualitative_results.mp4" type="video/mp4">
       </video>
-    </div>
+    </div> -->
    
   </div>
 </section>
