@@ -421,7 +421,118 @@
   </div>
 </section>
 
-  
+<!-- Navigation Trial Results -->
+<div style="margin-top: 2.5rem;">
+  <h3 class="title is-4">Navigation Trial Results</h3>
+
+  <p class="content has-text-justified">
+    Each table reports the first event observed during navigation. SyNeT improves safety by either delaying collision to later negatives or producing a safe stop instead of collision.
+  </p>
+
+  <!-- Campus -->
+  <h4 class="title is-5" style="margin-top: 1.5rem;">Campus</h4>
+  <p class="content">
+    Navigation outcomes in the Campus scenario.
+  </p>
+
+  <div class="table-container">
+    <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
+      <thead>
+        <tr>
+          <th>Trial</th>
+          <th>LORT</th>
+          <th>SyNeT+LORT</th>
+          <th>VS</th>
+          <th>SyNeT+VS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 2)</td><td>Collide (Neg. 5)</td><td><strong>Complete</strong></td></tr>
+        <tr><td>2</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 2)</td><td>Collide (Neg. 4)</td><td><strong>Safe Stop (Neg. 5)</strong></td></tr>
+        <tr><td>3</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 2)</td><td>Collide (Neg. 5)</td><td><strong>Complete</strong></td></tr>
+        <tr><td>4</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 2)</td><td>Collide (Neg. 4)</td><td><strong>Complete</strong></td></tr>
+        <tr><td>5</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 2)</td><td>Collide (Neg. 5)</td><td><strong>Complete</strong></td></tr>
+        <tr><td>6</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 2)</td><td>Collide (Neg. 5)</td><td><strong>Complete</strong></td></tr>
+        <tr><td>7</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 2)</td><td>Collide (Neg. 5)</td><td><strong>Complete</strong></td></tr>
+        <tr><td>8</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 2)</td><td>Collide (Neg. 3)</td><td><strong>Safe Stop (Neg. 5)</strong></td></tr>
+        <tr><td>9</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 2)</td><td>Collide (Neg. 5)</td><td><strong>Complete</strong></td></tr>
+        <tr><td>10</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 2)</td><td>Collide (Neg. 3)</td><td><strong>Safe Stop (Neg. 5)</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="figure-caption">
+    <strong>Complete</strong>: successful navigation without collision.
+    <strong>Collide (Neg. k)</strong>: collision with the k-th negative.
+    <strong>Safe Stop (Neg. k)</strong>: the planner safely stops before the k-th negative by recognizing it as non-traversable.
+  </p>
+
+  <!-- Offroad -->
+  <h4 class="title is-5" style="margin-top: 2.5rem;">Offroad</h4>
+  <p class="content">
+    Navigation outcomes in the Offroad scenario.
+  </p>
+
+  <div class="table-container">
+    <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
+      <thead>
+        <tr>
+          <th>Trial</th>
+          <th>LORT</th>
+          <th>SyNeT+LORT</th>
+          <th>VS</th>
+          <th>SyNeT+VS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 4)</td><td>Collide (Neg. 1)</td><td><strong>Complete</strong></td></tr>
+        <tr><td>2</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 2)</td><td>Collide (Neg. 2)</td><td><strong>Complete</strong></td></tr>
+        <tr><td>3</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 3)</td><td>Collide (Neg. 2)</td><td><strong>Complete</strong></td></tr>
+        <tr><td>4</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 3)</td><td>Collide (Neg. 1)</td><td><strong>Complete</strong></td></tr>
+        <tr><td>5</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 3)</td><td>Collide (Neg. 2)</td><td><strong>Complete</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="figure-caption">
+    <strong>Complete</strong>: successful navigation without collision.
+    <strong>Collide (Neg. k)</strong>: collision with the k-th negative.
+    <strong>Safe Stop (Neg. k)</strong>: the planner safely stops before the k-th negative by recognizing it as non-traversable.
+  </p>
+
+  <!-- Park -->
+  <h4 class="title is-5" style="margin-top: 2.5rem;">Park</h4>
+  <p class="content">
+    Navigation outcomes in the Park scenario.
+  </p>
+
+  <div class="table-container">
+    <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
+      <thead>
+        <tr>
+          <th>Trial</th>
+          <th>LORT</th>
+          <th>SyNeT+LORT</th>
+          <th>VS</th>
+          <th>SyNeT+VS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Collide (Neg. 1)</td><td><strong>Safe Stop (Neg. 3)</strong></td><td>Collide (Neg. 1)</td><td><strong>Complete</strong></td></tr>
+        <tr><td>2</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 3)</td><td>Collide (Neg. 1)</td><td><strong>Complete</strong></td></tr>
+        <tr><td>3</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 3)</td><td>Collide (Neg. 1)</td><td><strong>Complete</strong></td></tr>
+        <tr><td>4</td><td>Collide (Neg. 1)</td><td><strong>Safe Stop (Neg. 3)</strong></td><td>Collide (Neg. 1)</td><td><strong>Complete</strong></td></tr>
+        <tr><td>5</td><td>Collide (Neg. 1)</td><td>Collide (Neg. 3)</td><td>Collide (Neg. 1)</td><td><strong>Complete</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="figure-caption">
+    <strong>Complete</strong>: successful navigation without collision.
+    <strong>Collide (Neg. k)</strong>: collision with the k-th negative.
+    <strong>Safe Stop (Neg. k)</strong>: the planner safely stops before the k-th negative by recognizing it as non-traversable.
+  </p>
+</div>
 <!-- ========================= VIDEO ========================= -->
 <section class="section" id="video">
   <div class="container is-max-desktop">
